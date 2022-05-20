@@ -4,9 +4,9 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable("produto_usuario", function (table) {
-        table.string("usuario_id").notNullable();
+        table.uuid("usuario_id").notNullable();
         table.foreign("usuario_id").references("usuario_id").inTable("usuario").onDelete("cascade");
-        table.string("produto_id").notNullable();
+        table.uuid("produto_id").notNullable();
         table.foreign("produto_id").references("produto_id").inTable("produto").onDelete("cascade");
       });
 };
