@@ -10,6 +10,7 @@ exports.up = function(knex) {
     table.string("endereco").notNullable();
     table.string("telefone").notNullable();
     table.string("email").notNullable();
+    table.string("firebase_id").notNullable();
   });
 };
 

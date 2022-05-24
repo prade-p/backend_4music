@@ -29,6 +29,19 @@ module.exports = {
         }
     },
 
+    async getAll(request, response) {
+        try {        
+            const result = await ProdutoModel.getAll();
+
+            return response.status(200).json(result);
+        } catch (err) {
+            console.log("Produto getById failed: " + err);
+            return response.status(500).json({
+                notification: "Internal server error while trying to get produto",
+            });
+        }
+    },
+
     async getByCategory(request, response) {
         try {
             const { categoria } = request.params;         

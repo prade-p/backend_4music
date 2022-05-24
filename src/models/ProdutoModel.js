@@ -19,18 +19,26 @@ module.exports = {
     return result;
   },
 
+  async getAll() {
+    const result = await connection("produto")
+      .select("*")
+
+    return result;
+  },
+
   async getByCategory(categoria) {
     const result = await connection("produto")
-    .where({ categoria })
-    .select("*")
-    
-  return result;
+      .where({ categoria })
+      .select("*")
+
+    return result;
   },
 
   async updateById(produto_id, produto) {
       const result = await connection("produto").where({ produto_id }).update(produto);
       return result;
   },
+
 
   async deleteByID(produto_id) {
       const result = await connection("produto").where({ produto_id }).delete();
