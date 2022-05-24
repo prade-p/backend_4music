@@ -9,7 +9,6 @@ exports.up = function(knex) {
     table.string("descricao").notNullable();
     table.string("endereco").notNullable();
     table.string("telefone").notNullable();
-    table.string("senha").notNullable();
     table.string("email").notNullable();
   });
 };

@@ -6,8 +6,9 @@ module.exports = {
     const usuario_id = uuidv4();
     usuario.usuario_id = usuario_id;
 
-    const result = await connection("usuario").insert(usuario);
-    return result;
+    await connection("usuario").insert(usuario);
+    
+    return usuario_id;
   },
 
   async getById(usuario_id) {
@@ -23,7 +24,7 @@ module.exports = {
       return result;
   },
 
-  async deleteByID(usuario_id, usuario) {
+  async deleteByID(usuario_id) {
       const result = await connection("usuario").where({ usuario_id }).delete();
       return result;
   }

@@ -7,8 +7,8 @@ module.exports = {
     produto.produto_id = produto_id;
 
 
-    const result = await connection("produto").insert(produto);
-    return result;
+    await connection("produto").insert(produto);
+    return produto_id;
   },
 
   async getById(produto_id) {
@@ -19,12 +19,20 @@ module.exports = {
     return result;
   },
 
+  async getByCategory(categoria) {
+    const result = await connection("produto")
+    .where({ categoria })
+    .select("*")
+    
+  return result;
+  },
+
   async updateById(produto_id, produto) {
       const result = await connection("produto").where({ produto_id }).update(produto);
       return result;
   },
 
-  async deleteByID(produto_id, produto) {
+  async deleteByID(produto_id) {
       const result = await connection("produto").where({ produto_id }).delete();
       return result;
   }
