@@ -17,20 +17,13 @@ module.exports = {
     getById: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             produto_id: Joi.string().required(),
-        }),
-        [Segments.HEADERS]: Joi.object().keys({
-            authorization: Joi.string().required(),
-        })
-        .unknown(),
+        }),  
     }),
     getByCategory: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             categoria: Joi.string().required(),
-        }),
-        [Segments.HEADERS]: Joi.object().keys({
-            authorization: Joi.string().required(),
-        })
-        .unknown(),
+            pages: Joi.number().optional(),
+        }),  
     }),
     update: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
