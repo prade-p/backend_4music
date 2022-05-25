@@ -9,16 +9,28 @@ module.exports = {
             preco: Joi.string().required(),
             categoria: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     getById: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             produto_id: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     getByCategory: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             categoria: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     update: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
@@ -30,10 +42,18 @@ module.exports = {
             preco: Joi.string().optional(),
             categoria: Joi.string().optional(),
         }).min(1),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     delete: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             produto_id: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
 };

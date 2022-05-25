@@ -19,6 +19,14 @@ module.exports = {
     return result;
   },
 
+  async getByFields(fields) {
+    const result = await connection("usuario")
+      .where(fields)
+      .select("*")
+      .first();
+    return result;
+  },
+
   async updateById(usuario_id, usuario) {
       const result = await connection("usuario").where({ usuario_id }).update(usuario);
       return result;

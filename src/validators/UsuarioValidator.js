@@ -15,6 +15,10 @@ module.exports = {
         [Segments.PARAMS]: Joi.object().keys({
             usuario_id: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     update: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
@@ -27,10 +31,18 @@ module.exports = {
             email: Joi.string().email().optional(),
             telefone: Joi.string().optional(),
         }).min(1),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
     delete: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
             usuario_id: Joi.string().required(),
         }),
+        [Segments.HEADERS]: Joi.object().keys({
+            authorization: Joi.string().required(),
+        })
+        .unknown(),
     }),
 };
