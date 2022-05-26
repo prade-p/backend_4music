@@ -33,7 +33,8 @@ routes.delete("/produto/:produto_id", ProdutoValidator.delete, auth.authenticate
 
 // Produto_usuario
 routes.post("/produto_usuario", Produto_usuarioValidator.create, auth.authenticateToken, Produto_usuarioController.create);
-routes.get("/produto_usuario/:usuario_id", Produto_usuarioValidator.getById, auth.authenticateToken, Produto_usuarioController.getById);
+routes.get("/produto_usuario/:usuario_id", Produto_usuarioValidator.getProdutosById, auth.authenticateToken, Produto_usuarioController.getProdutosById);
+routes.get("/produto_usuario/:usuario_id/:produto_id", Produto_usuarioValidator.getIsProdutoFavorite, auth.authenticateToken, Produto_usuarioController.getIsProdutoFavorite);
 routes.delete("/produto_usuario/:usuario_id/:produto_id", Produto_usuarioValidator.delete, auth.authenticateToken, Produto_usuarioController.delete);
 
 module.exports = routes;

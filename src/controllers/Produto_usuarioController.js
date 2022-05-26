@@ -29,6 +29,34 @@ module.exports = {
         }
     },
 
+    async getProdutosById(request, response) {
+        try {
+            const { usuario_id } = request.params;         
+            const result = await Produto_usuarioModel.getProdutosById(usuario_id);
+
+            return response.status(200).json(result);
+        } catch (err) {
+            console.log("Produto_usuario getProdutosById failed: " + err);
+            return response.status(500).json({
+                notification: "Internal server error while trying to get produto_usuario",
+            });
+        }
+    },
+
+    async getIsProdutoFavorite(request, response) {
+        try {
+            const { usuario_id, produto_id } = request.params;         
+            const result = await Produto_usuarioModel.getIsProdutoFavorite(usuario_id, produto_id);
+
+            return response.status(200).json(result);
+        } catch (err) {
+            console.log("Produto_usuario getProdutosById failed: " + err);
+            return response.status(500).json({
+                notification: "Internal server error while trying to get produto_usuario",
+            });
+        }
+    },
+
     async delete(request, response) {
         try {
             const { usuario_id, produto_id } = request.params; 
